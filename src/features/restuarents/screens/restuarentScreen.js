@@ -13,7 +13,7 @@ const RestuarentScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.searchBar}>
-        <Searchbar placeholder="Search" />
+        <Searchbar elevation={5} placeholder="Search" />
       </View>
       <View style={styles.list}>
         <RestuarentInfo />
@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   list: {
-    backgroundColor: "green",
     flex: 1,
   },
 });
