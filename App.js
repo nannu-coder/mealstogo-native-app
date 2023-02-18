@@ -13,6 +13,7 @@ import MapScreen from "./src/features/restuarents/screens/MapScreen";
 import RestuarentScreen from "./src/features/restuarents/screens/RestuarentScreen";
 import SettingScreen from "./src/features/restuarents/screens/SettingScreen";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import { RestuarantProvider } from "./src/services/restuarants/restuarant.context";
 
 export default function App() {
   const [oswaldLoaded] = useOswald({
@@ -49,13 +50,15 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <NavigationContainer>
-          <Tab.Navigator screenOptions={screenOptions}>
-            <Tab.Screen name="Restuarent" component={RestuarentScreen} />
-            <Tab.Screen name="Maps" component={MapScreen} />
-            <Tab.Screen name="Settings" component={SettingScreen} />
-          </Tab.Navigator>
-        </NavigationContainer>
+        <RestuarantProvider>
+          <NavigationContainer>
+            <Tab.Navigator screenOptions={screenOptions}>
+              <Tab.Screen name="Restuarent" component={RestuarentScreen} />
+              <Tab.Screen name="Maps" component={MapScreen} />
+              <Tab.Screen name="Settings" component={SettingScreen} />
+            </Tab.Navigator>
+          </NavigationContainer>
+        </RestuarantProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>

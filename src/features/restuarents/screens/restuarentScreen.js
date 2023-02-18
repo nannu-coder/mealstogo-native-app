@@ -9,6 +9,8 @@ import {
 } from "react-native";
 import { Searchbar } from "react-native-paper";
 import styled from "styled-components";
+import Loader from "../../../components/Loader/Loader";
+import useRestuarant from "../../../Hooks/useRestuarant";
 import RestuarentInfo from "../Components/restuarent-info-component";
 
 const RestaurentList = styled(FlatList).attrs({
@@ -18,21 +20,20 @@ const RestaurentList = styled(FlatList).attrs({
 })``;
 
 const RestuarentScreen = () => {
+  const { restuarants, isLoading, error } = useRestuarant();
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.searchBar}>
         <Searchbar elevation={5} placeholder="Search" />
       </View>
       <RestaurentList
-        data={[
-          { name: 1 },
-          { name: 2 },
-          { name: 3 },
-          { name: 4 },
-          { name: 5 },
-          { name: 6 },
-        ]}
-        renderItem={() => <RestuarentInfo />}
+        data={restuarants}
+        renderItem={({ item }) => <RestuarentInfo restuarent={item} />}
         keyExtractor={(item) => item.name}
       />
     </SafeAreaView>

@@ -48,7 +48,7 @@ const RestuarentInfo = ({ restuarent = {} }) => {
               )}
             </Spacer>
             {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
-            <Spacer variant="left" size="small">
+            <Spacer variant="left" size="large">
               <Icon source={{ uri: icon }} />
             </Spacer>
           </SectionEnd>
