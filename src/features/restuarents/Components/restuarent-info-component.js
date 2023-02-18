@@ -26,6 +26,7 @@ const RestuarentInfo = ({ restuarent = {} }) => {
     isOpenNow = true,
     rating = 4,
     isClosedTemporarily = true,
+    placeId,
   } = restuarent;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));

@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import useLocation from "../../Hooks/useLocation";
 import { restuarantRequest, resturantTramsform } from "./restuarant.services";
 
 const restuarantContext = createContext();
@@ -7,12 +8,13 @@ const RestuarantProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [restuarants, setRestaurants] = useState([]);
   const [error, setError] = useState(null);
+  // const { location } = useLocation();
 
-  const retriveRestuarant = () => {
+  const retriveRestuarant = (location) => {
     setIsLoading(true);
-
+    setRestaurants([]);
     setTimeout(() => {
-      restuarantRequest()
+      restuarantRequest(location)
         .then(resturantTramsform)
         .then((results) => {
           setIsLoading(false);
@@ -25,11 +27,11 @@ const RestuarantProvider = ({ children }) => {
     }, 2000);
   };
 
-  console.log(restuarants);
-
   useEffect(() => {
+    // const locationString = `${location.lat}, ${location.lbg}`
+    // retriveRestuarant(locationString);
     retriveRestuarant();
-  }, []);
+  }, []); // should usedepency location later on
 
   return (
     <restuarantContext.Provider

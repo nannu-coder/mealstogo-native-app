@@ -18,6 +18,7 @@ export const resturantTramsform = ({ results = [] }) => {
     });
     return {
       ...restuarent,
+      address: restuarent.vicinity,
       isClosedTemporarily: restuarent.business_status === "CLOSED_TEMPORARILY",
       isOpenNow: restuarent.opening_hours && restuarent.opening_hours.open_now,
     };
