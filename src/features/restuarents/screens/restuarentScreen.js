@@ -36,7 +36,9 @@ const RestuarentScreen = ({ navigation }) => {
         renderItem={({ item }) => {
           return (
             <TouchableOpacity
-              onPress={() => navigation.navigate("RestuarentDetail")}
+              onPress={() =>
+                navigation.navigate("RestuarentDetail", { restuarent: item })
+              }
             >
               <RestuarentInfo restuarent={item} />
             </TouchableOpacity>
