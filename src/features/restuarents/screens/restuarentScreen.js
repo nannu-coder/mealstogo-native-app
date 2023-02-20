@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   SafeAreaView,
@@ -9,7 +9,9 @@ import {
 } from "react-native";
 
 import styled from "styled-components";
+import FavouriteBar from "../../../components/Favourites/FavouriteBar";
 import Loader from "../../../components/Loader/Loader";
+import useFavourites from "../../../Hooks/useFavourites";
 import useRestuarant from "../../../Hooks/useRestuarant";
 import RestuarentInfo from "../Components/restuarent-info-component";
 import SearchbarComponent from "../Components/Searchbar.Component";
@@ -22,6 +24,8 @@ const RestaurentList = styled(FlatList).attrs({
 
 const RestuarentScreen = ({ navigation }) => {
   const { restuarants, isLoading } = useRestuarant();
+  const [isToggled, setIsToggled] = useState(false);
+  const { favourites } = useFavourites();
 
   if (isLoading) {
     return <Loader />;
@@ -29,7 +33,17 @@ const RestuarentScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <SearchbarComponent />
+      <SearchbarComponent
+        isFavToggle={isToggled}
+        onToggle={() => setIsToggled(!isToggled)}
+      />
+
+      {isToggled && (
+        <FavouriteBar
+          favourites={favourites}
+          onNavigate={navigation.navigate}
+        />
+      )}
 
       <RestaurentList
         data={restuarants}

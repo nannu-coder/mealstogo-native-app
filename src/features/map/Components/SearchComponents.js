@@ -4,7 +4,7 @@ import { View } from "react-native";
 import { Searchbar } from "react-native-paper";
 // import useLocation from "../../../Hooks/useLocation";
 
-const SearchbarComponent = ({ onToggle, isFavToggle }) => {
+const SearchbarComponent = () => {
   //   const { keyword, search } = useLocation();
   const [searchKeyword, setSearchKeyword] = useState("sanfrancisco");
 
@@ -15,8 +15,7 @@ const SearchbarComponent = ({ onToggle, isFavToggle }) => {
   return (
     <View style={styles.searchBar}>
       <Searchbar
-        icon={isFavToggle ? "heart" : "heart-outline"}
-        onIconPress={onToggle}
+        icon="map"
         elevation={5}
         placeholder="Search"
         value={searchKeyword}
@@ -34,6 +33,10 @@ const SearchbarComponent = ({ onToggle, isFavToggle }) => {
 const styles = StyleSheet.create({
   searchBar: {
     padding: 16,
+    position: "absolute",
+    top: 10,
+    width: "100%",
+    zIndex: 9999,
   },
 });
 

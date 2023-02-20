@@ -14,6 +14,7 @@ import {
   Icon,
 } from "./restuarent-info.styles";
 import { Spacer } from "../../../components/Spacer/Spacer";
+import Favourite from "../../../components/Favourites/FavouriteComponents";
 
 const RestuarentInfo = ({ restuarent = {} }) => {
   const {
@@ -26,13 +27,14 @@ const RestuarentInfo = ({ restuarent = {} }) => {
     isOpenNow = true,
     rating = 4,
     isClosedTemporarily = true,
-    placeId,
+    // placeId,
   } = restuarent;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
 
   return (
     <RestuarentCard elevation={5}>
+      <Favourite restuarant={restuarent} />
       <RestuarentCardCover source={{ uri: photos[0] }} />
       <Info>
         <Text variant="label">{name}</Text>

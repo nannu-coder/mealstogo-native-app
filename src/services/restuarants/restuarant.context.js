@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import useLocation from "../../Hooks/useLocation";
+// import useLocation from "../../Hooks/useLocation";
 import { restuarantRequest, resturantTramsform } from "./restuarant.services";
 
 const restuarantContext = createContext();
