@@ -1,5 +1,4 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import MapScreen from "../../features/restuarents/screens/MapScreen";
@@ -8,7 +7,7 @@ import RestuarantNavigator from "./Restuarent.Navigator";
 
 const Tab = createBottomTabNavigator();
 
-const Navigation = () => {
+const AppNavigation = () => {
   const TAB_ICON = {
     Restuarent: "md-restaurant",
     Maps: "md-map",
@@ -28,14 +27,12 @@ const Navigation = () => {
   };
 
   return (
-    <NavigationContainer>
-      <Tab.Navigator screenOptions={screenOptions}>
-        <Tab.Screen name="Restuarent" component={RestuarantNavigator} />
-        <Tab.Screen name="Maps" component={MapScreen} />
-        <Tab.Screen name="Settings" component={SettingScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Tab.Navigator screenOptions={screenOptions}>
+      <Tab.Screen name="Restuarent" component={RestuarantNavigator} />
+      <Tab.Screen name="Maps" component={MapScreen} />
+      <Tab.Screen name="Settings" component={SettingScreen} />
+    </Tab.Navigator>
   );
 };
 
-export default Navigation;
+export default AppNavigation;

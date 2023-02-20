@@ -6,6 +6,7 @@ import useFavourites from "../../Hooks/useFavourites";
 
 const Favourite = ({ restuarant }) => {
   const { favourites, addToFav, removeFromFav } = useFavourites();
+
   const isFavourite = favourites.find((r) => r.placeId === restuarant.placeId);
 
   return (
