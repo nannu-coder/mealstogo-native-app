@@ -4,23 +4,16 @@ import {
   SafeAreaView,
   Platform,
   StatusBar,
-  FlatList,
   TouchableOpacity,
 } from "react-native";
 
-import styled from "styled-components";
 import FavouriteBar from "../../../components/Favourites/FavouriteBar";
 import Loader from "../../../components/Loader/Loader";
 import useFavourites from "../../../Hooks/useFavourites";
 import useRestuarant from "../../../Hooks/useRestuarant";
 import RestuarentInfo from "../Components/restuarent-info-component";
+import { RestaurantList } from "../Components/RestuarentListStyle";
 import SearchbarComponent from "../Components/Searchbar.Component";
-
-const RestaurentList = styled(FlatList).attrs({
-  contentContainerStyle: {
-    padding: 16,
-  },
-})``;
 
 const RestuarentScreen = ({ navigation }) => {
   const { restuarants, isLoading } = useRestuarant();
@@ -45,7 +38,7 @@ const RestuarentScreen = ({ navigation }) => {
         />
       )}
 
-      <RestaurentList
+      <RestaurantList
         data={restuarants}
         renderItem={({ item }) => {
           return (

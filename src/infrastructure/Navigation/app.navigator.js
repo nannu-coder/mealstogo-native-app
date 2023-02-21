@@ -2,8 +2,10 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import MapScreen from "../../features/restuarents/screens/MapScreen";
-import SettingScreen from "../../features/restuarents/screens/SettingScreen";
 import RestuarantNavigator from "./Restuarent.Navigator";
+import { FavouriteContextProvider } from "../../services/Favourites/FavouriteContext";
+import { RestuarantProvider } from "../../services/restuarants/restuarant.context";
+import SettingNavigator from "./Setting.Navigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -27,11 +29,15 @@ const AppNavigation = () => {
   };
 
   return (
-    <Tab.Navigator screenOptions={screenOptions}>
-      <Tab.Screen name="Restuarent" component={RestuarantNavigator} />
-      <Tab.Screen name="Maps" component={MapScreen} />
-      <Tab.Screen name="Settings" component={SettingScreen} />
-    </Tab.Navigator>
+    <FavouriteContextProvider>
+      <RestuarantProvider>
+        <Tab.Navigator screenOptions={screenOptions}>
+          <Tab.Screen name="Restuarent" component={RestuarantNavigator} />
+          <Tab.Screen name="Maps" component={MapScreen} />
+          <Tab.Screen name="Settings" component={SettingNavigator} />
+        </Tab.Navigator>
+      </RestuarantProvider>
+    </FavouriteContextProvider>
   );
 };
 
